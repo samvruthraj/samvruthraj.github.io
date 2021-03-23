@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Samvruth&#39;s Blog</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Samvruth&#39;s Blog</description>
+    <title>Premier League on Samvruth&#39;s Blog</title>
+    <link>/categories/premier-league/</link>
+    <description>Recent content in Premier League on Samvruth&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/premier-league/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Prem</title>
       <link>/2021/03/23/test/</link>
@@ -15,15 +15,6 @@
       <guid>/2021/03/23/test/</guid>
       <description>  Bracket Analyse Second Header The Premier league will have an international break this weekend.
 library(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ── ## ✓ ggplot2 3.3.3 ✓ purrr 0.3.4 ## ✓ tibble 3.0.5 ✓ dplyr 1.0.3 ## ✓ tidyr 1.1.2 ✓ stringr 1.4.0 ## ✓ readr 1.4.0 ✓ forcats 0.5.0 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag()   </description>
-    </item>
-    
-    <item>
-      <title>Sports Data Analysis and Visualization</title>
-      <link>/2021/03/16/sports-data-analysis-and-visualization/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/03/16/sports-data-analysis-and-visualization/</guid>
-      <description>Hey this is a cool blog post</description>
     </item>
     
   </channel>
