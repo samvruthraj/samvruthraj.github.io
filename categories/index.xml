@@ -16,14 +16,5 @@
       <description></description>
     </item>
     
-    <item>
-      <title>Books</title>
-      <link>/categories/books/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/books/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

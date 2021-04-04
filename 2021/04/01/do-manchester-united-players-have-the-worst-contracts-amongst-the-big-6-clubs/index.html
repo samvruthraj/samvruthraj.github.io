@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Do Manchester United Players have the worst contracts amongst the &#34;Big 6&#34; Clubs? - Samvruth&#39;s Blog</title>
+<meta property="og:title" content="Do Manchester United Players have the worst contracts amongst the &#34;Big 6&#34; Clubs? - Samvruth&#39;s Blog">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/samvruthraj">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/Samvruth03">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Do Manchester United Players have the worst contracts amongst the &#34;Big 6&#34; Clubs?</h1>
+
+    
+    <span class="article-date">2021-04-01</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Manchester United has not won the English Premier League title ever since Sir Alex Ferguson, retired from his role as manager after the 2012/13 season. To this day, his successors David Moyes, Louis Van Gaal, Jose Mourinho, and Ole Gunnar Solskjaer have not been able to get success back to Old Trafford. David Moyes was chosen as the replacement right after Sir Alex retired, however, Moyes did not last that long as manager, following Moyes, Louis Van Gaal was at the club from 2014 to 2016, where he managed to win just one cup competition which was the FA Cup. Jose Mourinho was then given the job, in his first season as United manager, he led the team to the FA Community Shield, the League Cup, and the UEFA Europa League, the Red Devils also finished second place, right behind their rivals Man City, who went on to lift the Premier League title in the 2017/18 season. Following Mourinho’s dismissal, Ole Gunnar Solskjaer was appointed the interim boss for the remainder of the season and eventually penned a three-year deal with the Red Devils. Under Ole, Man United has not managed any silverware, losing four semifinals and a quarterfinal respectively. Well, one of the reasons Manchester United was so dominant before Sir Alex’s retirement, was good recruitment of players. United has desperately struggled with the recruitment of players, and over the past few years, players like, Angel Di Maria, Radamel Falcao, Alexis Sanchez, who have simply not fit United’s philosophy. Man United is known to give their players enormous contracts which eventually hurt the financials of the Club, given that these signings do not perform and eventually leave the club. Ever since Ole has got the permanent job, United seems to be doing just fine in terms of bringing players to Old Trafford, however, work needs to be done if Manchester United wants their glory days back.</p>
+<p>Here’s a look at some data.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.0.5     ✓ dplyr   1.0.3
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>library(ggrepel)</code></pre>
+<pre class="r"><code>PL &lt;- read_csv(&quot;EPlplayers2021.csv&quot;)</code></pre>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   .default = col_double(),
+##   Player = col_character(),
+##   CleanPlayer = col_character(),
+##   Nation = col_character(),
+##   Pos = col_character(),
+##   Squad = col_character(),
+##   Age = col_character()
+## )
+## ℹ Use `spec()` for the full column specifications.</code></pre>
+<p>I will be using one data set, where I have pulled the data from Sports Reference’s Soccer site which mainly deals with the Premier League data only, and I have also looked at Transfer market, to find the current Transfer Values of Manchester United players and players from the Big Six clubs.</p>
+<p>Since I wanted to just look at Manchester United, before I could compare them to the Big Six clubs, I filtered Manchester United out from by data set which had all the 20 Premier League teams. I also wanted to look at players with over 100 minutes, which basically rules out players coming up from the Academy, it would be unfair to look at their contracts as they are still breaking into the first team. It would also rule out players who picked long term injuries right at the start of the season.</p>
+<pre class="r"><code>MUTD &lt;- PL %&gt;% filter(Squad == &quot;Manchester Utd&quot;) %&gt;% 
+  filter(Min &gt; 100)</code></pre>
+<p>Firstly, I was curious to see the amount of money these players make per minute, doing some work with the data, I used their current transfer values, with the amount of minutes they have played this season. I could have used the current wages, but I went a step ahead and say these players were to be sold in the upcoming seasons?</p>
+<pre class="r"><code>PPM &lt;- MUTD %&gt;%
+  mutate(PayPerMinute = TransferMarketvalue/Min)</code></pre>
+<p>Which brings me to my first chart, this Bar chart shows you the players and how much they get paid per minute.</p>
+<pre class="r"><code>ggplot() +
+  geom_bar(data=PPM, aes(x= reorder(Player, PayPerMinute), weight=PayPerMinute)) + 
+  coord_flip()+ 
+  labs(x=&quot;Player&quot;, 
+       y=&quot;Dollar Per Minute&quot;, 
+       title=&quot;Donny Van De Beek is struggling at Manchester United.&quot;, 
+       subtitle=&quot;Will this season be the end at Old Trafford for the Dutchman?&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) + 
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 14, face = &quot;bold&quot;),
+    axis.title = element_text(size = 9), 
+    plot.subtitle = element_text(size=10), 
+    ) </code></pre>
+<p><img src="/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>BigSix &lt;- c(&quot;Arsenal&quot; , &quot;Chelsea&quot; , &quot;Liverpool&quot; , &quot;Manchester City&quot; , &quot;Manchester Utd&quot; ,&quot;Tottenham&quot;)
+BigSixData &lt;- PL %&gt;% filter(Squad %in% BigSix)</code></pre>
+<pre class="r"><code>BigSixPPm &lt;- BigSixData  %&gt;% 
+  mutate(PPM = TransferMarketvalue/Min)</code></pre>
+<pre class="r"><code>BigSixData %&gt;% summarise(Transfermarketvalueaverage = mean(TransferMarketvalue, na.rm = TRUE),
+                         Averageminutes = mean(Min, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   Transfermarketvalueaverage Averageminutes
+##                        &lt;dbl&gt;          &lt;dbl&gt;
+## 1                  36056319.          1180.</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_point(data = BigSixPPm, aes(x= TransferMarketvalue, y= Min), color = &quot;grey&quot;) +
+  geom_point(data = MUTD, aes(x=TransferMarketvalue, y=Min), color = &quot;#DA291C&quot;) + 
+  geom_text_repel(data= MUTD, aes(x= TransferMarketvalue, y= Min, label= Player), size = 3) +
+  geom_vline(xintercept = 36056319, color= &quot;dark grey&quot;) +
+  geom_hline(yintercept =1179.795, color= &quot;dark grey&quot; ) +
+  geom_text(aes(x=100000000, y=0, label=&quot;High Transfer Market Value, low minutes played&quot;), color = &quot;red&quot;, size = 3) +
+  geom_text(aes(x=100000000, y=3000, label=&quot;High Transfer Market Value, high minutes played&quot;), color = &quot;red&quot;, size=3) +
+  scale_x_continuous(labels = comma) + 
+  labs(x=&quot;Transfer Market Value&quot;, 
+       y=&quot;Minutes Played&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) + 
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 16, face = &quot;bold&quot;),
+    axis.title = element_text(size = 8), 
+    plot.subtitle = element_text(size=10), 
+    panel.grid.minor = element_blank()
+    ) </code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p><img src="/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>Attack &lt;- c(&quot;FW&quot; , &quot;MF&quot; , &quot;MFFW&quot;) 
+
+Attackers &lt;- BigSixData %&gt;% filter(Pos %in% Attack) %&gt;% filter (Min &gt; 100)</code></pre>
+<pre class="r"><code>AttackPPm &lt;- Attackers %&gt;% 
+  mutate(ppm = TransferMarketvalue/Min)
+
+MU &lt;- AttackPPm %&gt;%  
+  filter(Squad == &quot;Manchester Utd&quot;) %&gt;%
+  filter(Min &gt; 100)</code></pre>
+<pre class="r"><code>AttackPPm %&gt;% summarise(GoalAverage = mean(Gls, na.rm = TRUE), 
+                        PPmAverage = mean(ppm, na.rm = TRUE))</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   GoalAverage PPmAverage
+##         &lt;dbl&gt;      &lt;dbl&gt;
+## 1        3.67     43110.</code></pre>
+<pre class="r"><code>ggplot()+
+  geom_point(data = AttackPPm, aes(x= ppm, y= Gls))+
+  geom_point(data = MU, aes(x = ppm, y = Gls), color = &quot;#DA291C&quot; ) +
+   geom_text_repel(data= MU, aes(x= ppm, y= Gls, label= Player), size = 2.5) +
+  geom_vline(xintercept = 46346.62) +
+  geom_hline(yintercept =3.711864 )+
+  geom_text(aes(x=10000, y=17, label=&quot;High goals, low PPM&quot;), color = &quot;red&quot;, size = 3) +
+  geom_text(aes(x=125000, y=17, label=&quot;High goals, high PPM&quot;), color = &quot;red&quot;, size=3) +
+  scale_x_continuous(labels = comma) + 
+  labs(x=&quot;Pay Per Minute&quot;, 
+       y=&quot;Goals Scored&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) + 
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 16, face = &quot;bold&quot;),
+    axis.title = element_text(size = 8), 
+    plot.subtitle = element_text(size=10), 
+    panel.grid.minor = element_blank()
+    ) </code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>AttackingModel &lt;- lm(Gls~ppm, data = AttackPPm)
+summary(AttackingModel)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Gls ~ ppm, data = AttackPPm)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -4.359 -3.166 -1.817  1.957 13.477 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  4.412e+00  1.040e+00   4.244 7.74e-05 ***
+## ppm         -1.593e-05  2.013e-05  -0.791    0.432    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.512 on 60 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.01033,    Adjusted R-squared:  -0.006166 
+## F-statistic: 0.6262 on 1 and 60 DF,  p-value: 0.4319</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

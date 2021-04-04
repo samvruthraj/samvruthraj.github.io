@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Premier League on Samvruth&#39;s Blog</title>
-    <link>/categories/premier-league/</link>
-    <description>Recent content in Premier League on Samvruth&#39;s Blog</description>
+    <title>Football on Samvruth&#39;s Blog</title>
+    <link>/tags/football/</link>
+    <description>Recent content in Football on Samvruth&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/premier-league/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/football/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Do Manchester United Players have the worst contracts amongst the &#34;Big 6&#34; Clubs?</title>
       <link>/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/</link>
