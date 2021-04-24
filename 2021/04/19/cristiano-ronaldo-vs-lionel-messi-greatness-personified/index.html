@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Cristiano Ronaldo vs Lionel Messi, Greatness Personified1 - Samvruth&#39;s Blog</title>
+<meta property="og:title" content="Cristiano Ronaldo vs Lionel Messi, Greatness Personified1 - Samvruth&#39;s Blog">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/samvruthraj">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/Samvruth03">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Cristiano Ronaldo vs Lionel Messi, Greatness Personified1</h1>
+
+    
+    <span class="article-date">2021-04-19</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/header-attrs/header-attrs.js"></script>
+
+
+<pre class="r"><code>library(tidyverse)
+library(scales)
+library(ggrepel)
+library(waffle)</code></pre>
+<pre class="r"><code>Best &lt;- read_csv(&quot;goats.csv&quot;)</code></pre>
+<pre class="r"><code>goal &lt;- Best %&gt;%
+  group_by(Age, Player) %&gt;%
+  summarise(total = sum(Gls))  %&gt;% 
+  arrange(Player) %&gt;% 
+  group_by(Player) %&gt;% 
+  mutate(
+   cumulativetotal= cumsum(total)
+  )</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Age&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_step(data = goal, aes(x= Age, y=cumulativetotal, group = Player, color = Player)) +
+  labs(x=&quot;Age&quot;, 
+       y=&quot;Cumulative Goals&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) +  
+  scale_color_manual(values = c(&quot;black&quot;, &quot;#EDBB00&quot;)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    axis.title = element_text(size = 9), 
+    plot.subtitle = element_text(size=10), 
+    )</code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>Comp &lt;- Best %&gt;%
+  group_by(Age, Player, CompType) %&gt;%
+  summarise(total = sum(Gls))  %&gt;% 
+  arrange(Player, CompType) %&gt;% 
+  group_by(Player, CompType) %&gt;% 
+  mutate(
+   cumulativetotal= cumsum(total)
+  )</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Age&#39;, &#39;Player&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_step(data = Comp , aes(x= Age, y=cumulativetotal, group = Player, color = Player)) +
+  facet_wrap(.~CompType) +
+  labs(x=&quot;Age&quot;, 
+       y=&quot;Cumulative Goals across competitions&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) +  
+  scale_color_manual(values = c(&quot;black&quot;, &quot;#EDBB00&quot;)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    axis.title = element_text(size = 9), 
+    plot.subtitle = element_text(size=10), 
+    )</code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>Assists &lt;- Best %&gt;%
+  group_by(Age, Player) %&gt;%
+  summarise(total = sum(Ast)) %&gt;% 
+  drop_na()</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Age&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_line(data = Assists , aes(x= Age, y=total, group = Player, color = Player))+
+  labs(x=&quot;Age&quot;, 
+       y=&quot;Assists&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) +  
+  scale_color_manual(values = c(&quot;black&quot;, &quot;#EDBB00&quot;)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    axis.title = element_text(size = 9), 
+    plot.subtitle = element_text(size=10),
+    )</code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code>MP &lt;- Best %&gt;%
+  group_by(Age, Player) %&gt;%
+  summarise(total = sum(Min))  %&gt;% 
+  arrange(Player)</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Age&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>ggplot() + 
+  geom_line(data = MP, aes(x= Age, y=total, group = Player, color = Player))+
+  geom_text(aes(x=25, y=2500, label= &quot;injuries/DNP&quot;), color = &quot;blue&quot;, size = 3.5) +
+  scale_y_continuous(labels = comma) +
+  labs(x=&quot;Age&quot;, 
+       y=&quot;Minutes Played&quot;, 
+       title=&quot;&quot;, 
+       subtitle=&quot;&quot;, 
+       caption=&quot;Source: Sports-Reference.com | By Samvruth Raj&quot;) +  
+  scale_color_manual(values = c(&quot;black&quot;, &quot;#EDBB00&quot;)) +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 12, face = &quot;bold&quot;),
+    axis.title = element_text(size = 9), 
+    plot.subtitle = element_text(size=10)
+    )</code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>RedYellow &lt;- Best %&gt;% 
+  group_by(Player) %&gt;% 
+  summarise(Redtotal = sum(CrdR),
+            YellowTotal = sum(CrdY))</code></pre>
+<pre class="r"><code>red &lt;- c(&quot;Cristiano Ronaldo&quot; = 10, &quot;Lionel Messi&quot; = 1)
+yellow &lt;- c(&quot;Cristiano Ronaldo&quot; = 97, &quot;Lionel Messi&quot; = 72)</code></pre>
+<pre class="r"><code>waffle(
+  red,
+  rows = 2,
+  xlab = &quot;1 card = 1 square&quot;,
+  color = c(&quot;firebrick1&quot;, &quot;red3&quot;)
+    )</code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre class="r"><code>waffle(
+  yellow,
+  rows = 6,
+  xlab = &quot;1 card = 1 square&quot;,
+  color = c(&quot;gold&quot;, &quot;yellow2&quot;)
+  ) </code></pre>
+<p><img src="/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

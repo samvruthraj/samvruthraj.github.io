@@ -6,7 +6,16 @@
     <description>Recent content on Samvruth&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cristiano Ronaldo vs Lionel Messi, Greatness Personified1</title>
+      <link>/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/</link>
+      <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/</guid>
+      <description>library(tidyverse) library(scales) library(ggrepel) library(waffle) Best &amp;lt;- read_csv(&amp;quot;goats.csv&amp;quot;) goal &amp;lt;- Best %&amp;gt;% group_by(Age, Player) %&amp;gt;% summarise(total = sum(Gls)) %&amp;gt;% arrange(Player) %&amp;gt;% group_by(Player) %&amp;gt;% mutate( cumulativetotal= cumsum(total) ) ## `summarise()` has grouped output by &amp;#39;Age&amp;#39;. You can override using the `.groups` argument. ggplot() + geom_step(data = goal, aes(x= Age, y=cumulativetotal, group = Player, color = Player)) + labs(x=&amp;quot;Age&amp;quot;, y=&amp;quot;Cumulative Goals&amp;quot;, title=&amp;quot;&amp;quot;, subtitle=&amp;quot;&amp;quot;, caption=&amp;quot;Source: Sports-Reference.com | By Samvruth Raj&amp;quot;) + scale_color_manual(values = c(&amp;quot;black&amp;quot;, &amp;quot;#EDBB00&amp;quot;)) + theme_minimal() + theme( plot.</description>
+    </item>
+    
     <item>
       <title>Do Manchester United Players have the worst contracts amongst the &#34;Big 6&#34; Clubs?</title>
       <link>/2021/04/01/do-manchester-united-players-have-the-worst-contracts-amongst-the-big-6-clubs/</link>
