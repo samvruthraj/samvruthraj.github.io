@@ -8,12 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/football/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cristiano Ronaldo vs Lionel Messi, Greatness Personified1</title>
+      <title>Cristiano Ronaldo vs Lionel Messi, Greatness Personified.</title>
       <link>/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/</link>
       <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/04/19/cristiano-ronaldo-vs-lionel-messi-greatness-personified/</guid>
-      <description>library(tidyverse) library(scales) library(ggrepel) library(waffle) Best &amp;lt;- read_csv(&amp;quot;goats.csv&amp;quot;) goal &amp;lt;- Best %&amp;gt;% group_by(Age, Player) %&amp;gt;% summarise(total = sum(Gls)) %&amp;gt;% arrange(Player) %&amp;gt;% group_by(Player) %&amp;gt;% mutate( cumulativetotal= cumsum(total) ) ## `summarise()` has grouped output by &amp;#39;Age&amp;#39;. You can override using the `.groups` argument. ggplot() + geom_step(data = goal, aes(x= Age, y=cumulativetotal, group = Player, color = Player)) + labs(x=&amp;quot;Age&amp;quot;, y=&amp;quot;Cumulative Goals&amp;quot;, title=&amp;quot;&amp;quot;, subtitle=&amp;quot;&amp;quot;, caption=&amp;quot;Source: Sports-Reference.com | By Samvruth Raj&amp;quot;) + scale_color_manual(values = c(&amp;quot;black&amp;quot;, &amp;quot;#EDBB00&amp;quot;)) + theme_minimal() + theme( plot.</description>
+      <description>Before the start of the 2003/2004 season, Manchester United signed Cristiano Ronaldo, at the time the most expensive teenager in English Football history,
+library(tidyverse) library(scales) library(ggrepel) library(waffle) Best &amp;lt;- read_csv(&amp;quot;goats.csv&amp;quot;) goal &amp;lt;- Best %&amp;gt;% group_by(Age, Player) %&amp;gt;% summarise(total = sum(Gls)) %&amp;gt;% arrange(Player) %&amp;gt;% group_by(Player) %&amp;gt;% mutate( cumulativetotal= cumsum(total) ) ## `summarise()` has grouped output by &amp;#39;Age&amp;#39;. You can override using the `.groups` argument. ggplot() + geom_step(data = goal, aes(x= Age, y=cumulativetotal, group = Player, color = Player)) + labs(x=&amp;quot;Age&amp;quot;, y=&amp;quot;Cumulative Goals&amp;quot;, title=&amp;quot;&amp;quot;, subtitle=&amp;quot;&amp;quot;, caption=&amp;quot;Source: Sports-Reference.</description>
     </item>
     
   </channel>
